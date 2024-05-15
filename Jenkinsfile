@@ -47,13 +47,11 @@ pipeline {
         stage('Deploy to Kubernetes'){
             steps{
                 script{
-                    dir('Kubernetes') {
-                        withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
                                 sh 'kubectl apply -f deploymentservice.yml'
                                 sh 'kubectl get svc'
                                 sh 'kubectl get all'
-                        }   
-                    }
+                           
+                    
                 }
             }
         }
