@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: examen
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: examen
+  template:
+    metadata:
+      labels:
+        app: examen
+    spec:
+      containers:
+      - name: myappcontainer
+        image: houyem62/examen
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: examen
+  labels:
+    app: examen
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 32000
+  selector:
+    app: examen
