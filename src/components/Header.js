@@ -1,9 +1,9 @@
-import React from 'react'
+ import React from 'react'
 
 export const Header = () => {
   return (
     <h2>
-      Expense Tracker
+      Expense Tracker Project
     </h2>
   )
 }
