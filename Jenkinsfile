@@ -16,14 +16,13 @@ pipeline {
             }
         }
          stage("Sonarqube"){
-            steps{
-                withSonarQubeEnv('sonar') {
-                    sh '''  sonar-scanner \ -Dsonar.projectName=examen \
-                    -Dsonar.projectKey=examen \
-                    '''
-                }
-            }
+    steps{
+        withSonarQubeEnv('sonar') {
+            sh '''sonar-scanner -Dsonar.projectName=examen -Dsonar.projectKey=examen'''
         }
+    }
+}
+
         
         
         stage('Building image') {
@@ -67,3 +66,4 @@ pipeline {
     }
     
 }
+
